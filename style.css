@@ -1,3 +1,25 @@
+/* ----------  MANUAL THEME OVERRIDES  ---------- */
+body[data-theme="dark"] {
+  --bg:      #202124;
+  --fg:      #e8eaed;
+  --border:  #333;
+}
+body[data-theme="light"] {
+  --bg:      #f8f9fa;
+  --fg:      #24292e;
+  --border:  #e5e7eb;
+}
+
+/* ----------  CSS VARIABLES / LIGHT MODE DEFAULTS  ---------- */
+:root {
+  --bg:       #f8f9fa;
+  --fg:       #24292e;
+  --accent:   #009380;   /* LoveIt purple */
+  --radius:   8px;
+  --max-width: 700px;
+  --border:   #e5e7eb;   /* light-mode border */
+}
+
 /* ----------  CSS RESET  ---------- */
 *,
 *::before,
@@ -5,25 +27,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-/* ----------  THEME TOKENS  ---------- */
-:root {
-  /* Light mode defaults */
-  --bg:       #f8f9fa;
-  --fg:       #24292e;
-  --accent:   #009380;
-  --radius:   8px;
-  --max-width: 700px;
-  --border:   #e5e7eb;   /* light-mode border */
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg:     #202124;
-    --fg:     #e8eaed;
-    --border: #333;       /* dark-mode border */
-  }
 }
 
 /* ----------  BASE STYLES  ---------- */
@@ -40,32 +43,34 @@ main {
   padding: 0 1rem;
 }
 
-/* ----------  HEADER / NAV  ---------- */
+/* ----------  HEADER / NAV (with flex)  ---------- */
 header.topbar {
   position: sticky;
   top: 0;
   z-index: 100;
   background: var(--bg);
-  border-bottom: 1px solid var(--border);
-  box-shadow: 0 1px 3px rgb(0 0 0 / 0.04);
-}
 
-header.topbar nav {
+  border-bottom: 1px solid #d1d5db;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0.75rem 1rem;
+}
+
+.nav-links {
   display: flex;
   gap: 2rem;
 }
 
-/* underline animation like LoveIt ----------------- */
 .nav-link {
   position: relative;
   text-decoration: none;
   color: var(--fg);
   font-weight: 600;
 }
-
 .nav-link::after {
   content: "";
   position: absolute;
@@ -76,28 +81,36 @@ header.topbar nav {
   background: var(--accent);
   transition: width 0.2s ease;
 }
-
 .nav-link:hover::after,
 .nav-link.active::after {
   width: 100%;
 }
-
 .nav-link:hover {
   color: var(--accent);
 }
 
-/* ----------  FLOATING THEME BUTTON  ---------- */
-#theme-toggle {
-  position: fixed;
-  top: 1rem;        /* switch to left:1rem if you want it on the upper-left */
-  right: 1rem;
-  width: 2.25rem;
-  height: 2.25rem;
-  border-radius: 50%;
-  border: 1px solid var(--border);
-  background: var(--bg);
+.site-footer {
+  text-align: center;
+  font-size: 0.875rem;
   color: var(--fg);
-  font-size: 1rem;
+  opacity: 0.6;
+  margin: 4rem 0 2rem;
+}
+.site-footer p {
+  margin: 0;
+}
+
+/* ----------  THEME TOGGLE BUTTON  ---------- */
+#theme-toggle {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  /* border: 2px solid var(--accent); */
+  /* background: var(--bg); */
+  color: var(--fg);
+  font-size: 1.2rem;
   cursor: pointer;
   line-height: 1;
 }
