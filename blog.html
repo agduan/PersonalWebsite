@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blog · My Obsidian-style Site</title>
+
+  <!-- link the stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- header/nav -->
+  <header class="topbar">
+    <nav>
+      <a href="index.html"   class="nav-link">Home</a>
+      <a href="blog.html"    class="nav-link active">Blog</a>
+      <a href="design.html"  class="nav-link">Design</a>
+    </nav>
+  </header>
+
+  <!-- floating theme toggle -->
+  <button id="theme-toggle" aria-label="Toggle dark mode">☼</button>
+
+  <main>
+    <h1>Blog</h1>
+    <p>This is a blank canvas for your future content.</p>
+  </main>
+
+  <!-- theme-toggle script at the end so DOM is ready -->
+  <script>
+    const stored  = localStorage.getItem('theme');
+    const prefers = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.body.dataset.theme = stored || prefers;
+
+    document.getElementById('theme-toggle').onclick = () => {
+      const next = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+      document.body.dataset.theme = next;
+      localStorage.setItem('theme', next);
+    };
+  </script>
+</body>
+</html>
