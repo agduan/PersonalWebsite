@@ -13,5 +13,4 @@ This is my [personal website](https://alexandraduan.wiki), a simple, minimalist 
 You can toggle between a light and a dark theme using the sun/moon icon in the upper-right-hand corner.
 
 | ![Light mode](images/sample-light.png) | ![Dark mode](images/sample-dark.png) |
-|:--:|:--:|
-| *Light mode* | *Dark mode* |
+| <small><em>Light mode</em></small> | <small><em>Dark mode</em></small> |
