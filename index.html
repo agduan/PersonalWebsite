@@ -7,6 +7,7 @@
     <title>home | alexandraduan</title>
 
     <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon"/>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/computer-modern/1.0.0/css/computer-modern.min.css" rel="stylesheet" />
 </head>
@@ -33,7 +34,7 @@
     <header class="topbar">
         <nav class="nav-links">
             <a href="index.html" class="nav-link active">Home</a>
-            <a href="blog.html" class="nav-link">Currently</a>
+            <a href="currently.html" class="nav-link">Currently</a>
             <a href="blog.html" class="nav-link">Blog</a>
         </nav>
         <button id="theme-toggle" aria-label="Toggle dark mode">☼</button>
@@ -49,7 +50,7 @@
         <a href="https://setwithforks-dev.web.app/">Set with Friends</a> (the <a href="https://setwithfriends.com/">original website</a> still works, but is no longer being updated). Alternatively, you can always play in person! There will always exist someone willing to play with you. One can prove this by example using me. (Further exercises have been left to the reader.)
     </main>
 
-    <!-- theme-toggle script at the end so DOM is ready -->
+    <!-- theme-toggle script -->
     <script>
         const btn = document.getElementById('theme-toggle');
         const stored = localStorage.getItem('theme');

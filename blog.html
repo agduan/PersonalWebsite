@@ -7,6 +7,7 @@
 	<title>blog | alexandraduan</title>
 
 	<link rel="stylesheet" href="style.css" />
+	<link rel="icon" href="images/favicon.ico" type="image/x-icon"/>
 	<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/computer-modern/1.0.0/css/computer-modern.min.css" rel="stylesheet" />
 </head>
@@ -41,11 +42,35 @@
 
 	<main>
 		<h1>$ blog</h1>
-		<p>Sometimes I write here.</p>
+		<div id="blog-container"></div>
 	</main>
 
-	<!-- theme-toggle script at the end so DOM is ready -->
 	<script>
+		// MARKDOWN IMPORTS
+		const files = ['currently.md']; // display order
+    const container = document.getElementById('blog-container');
+
+    files.forEach(filename => {
+			fetch(`files/${filename}`)
+				.then(res => {
+					if (!res.ok) throw new Error(`Could not load ${filename}`);
+					return res.text();
+				})
+				.then(md => {
+					const article = document.createElement('article');
+					article.classList.add('blog-post');
+					article.innerHTML = marked.parse(md);
+					container.appendChild(article);
+				})
+				.catch(err => {
+					console.error(err);
+					const errorDiv = document.createElement('div');
+					errorDiv.textContent = `Failed to load ${filename}`;
+					container.appendChild(errorDiv);
+				});
+		});
+
+		// TOGGLING
 		const btn = document.getElementById('theme-toggle');
 		const stored = localStorage.getItem('theme');
 		const prefers = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';

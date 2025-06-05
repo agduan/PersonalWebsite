@@ -1,4 +1,4 @@
-/* ----------  MANUAL THEME OVERRIDES  ---------- */
+/* ----------  THEME OVERRIDES  ---------- */
 body[data-theme="dark"] {
     --bg: #202124;
     --fg: #e8eaed;
@@ -24,6 +24,7 @@ body[data-theme="light"] {
     /* light gray */
 }
 
+/* ----------  INLINE CODE ---------- */
 p {
     margin-bottom: 1rem;
 }
@@ -41,11 +42,9 @@ code {
     --bg: #f8f9fa;
     --fg: #24292e;
     --accent: #009380;
-    /* LoveIt purple */
     --radius: 8px;
     --max-width: 700px;
     --border: #e5e7eb;
-    /* light-mode border */
 }
 
 /* ----------  CSS RESET  ---------- */
@@ -89,31 +88,24 @@ main {
     text-align: left;
 }
 
-main h1 {
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 400;
-    margin-bottom: 1rem;
-}
-
-main h2 {
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 400;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-}
-
+main h1,
+main h2,
 main h3 {
     font-family: 'JetBrains Mono', monospace;
     font-weight: 400;
+} main h1 {
+    margin-bottom: 1rem;
+} main h2 {
+    margin: 2rem 0 1rem;
 }
 
 .cm-font {
-  font-family: 'Computer Modern', serif; /* or whatever your font-family name is */
-  font-style: normal; /* override italic if needed */
-  font-weight: normal; /* adjust weight if needed */
+  font-family: 'Computer Modern', serif;
+  font-style: normal;
+  font-weight: normal;
 }
 
-/* ----------  HEADER / NAV (with flex)  ---------- */
+/* ----------  HEADER / NAV ---------- */
 header.topbar {
     position: sticky;
     top: 0;
@@ -140,9 +132,9 @@ header.topbar {
 
 .nav-link {
     position: relative;
-    text-decoration: none;
     color: var(--fg);
     font-weight: 600;
+    /* text-decoration: none; */
 }
 
 .nav-link::after {
@@ -171,8 +163,7 @@ header.topbar {
     color: var(--fg);
     opacity: 0.6;
     margin: 4rem 0 2rem;
-    flex-shrink: 0;
-    /* footer stays at bottom */
+    flex-shrink: 0; /* footer stays at bottom, error check currently */
 }
 
 .site-footer p {
@@ -199,18 +190,7 @@ header.topbar {
     color: #fff;
 }
 
-.logo-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-right: 1rem;
-}
-
-#site-logo {
-    height: 100px;
-    width: auto;
-}
-
+/* ----------  LOGO CENTERING  ---------- */
 .center-logo {
     width: 100%;
     display: flex;
@@ -228,38 +208,36 @@ header.topbar {
 .logo-caption {
     font-size: 0.75rem;
     color: #6c757d;
-    /* modify color to be like footer */
     font-weight: 400;
     margin-top: 0.25rem;
     text-align: center;
 }
 
+/* ----------  SIDEBAR  ---------- */
 .sidebar {
     position: fixed;
-    font-family: 'JetBrains Mono', monospace;
     top: 0;
     left: 0;
     width: 280px;
     height: 100%;
     background: var(--sidebar-bg);
     border-right: 1px solid var(--border);
-    padding: 2rem 2rem;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    z-index: 1000;
+    font-family: 'JetBrains Mono', monospace;
     text-align: center;
+    z-index: 1000;
 }
 
 .sidebar-logo {
-    /* the mac */
-    width: auto;
     height: 140px;
+    width: auto;
     margin-bottom: 1rem;
 }
 
 .sidebar-name {
-    /* font-family: 'Pacifico', cursive; */
     font-family: 'JetBrains Mono', monospace;
     font-size: 1.4rem;
     font-weight: 800;
