@@ -1,5 +1,3 @@
-pandoc [md_file].md -f markdown -t html -o blog-content.html
-
 # $ currently
 ## $ cd "reading"
 ### $ poetry
