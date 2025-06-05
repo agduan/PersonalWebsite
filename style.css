@@ -1,121 +1,290 @@
 /* ----------  MANUAL THEME OVERRIDES  ---------- */
 body[data-theme="dark"] {
-  --bg:      #202124;
-  --fg:      #e8eaed;
-  --border:  #333;
+    --bg: #202124;
+    --fg: #e8eaed;
+    --border: #333;
+    --sidebar-bg: #2a2a2a;
+    /* slightly lighter than dark bg */
 }
+
+body[data-theme="dark"] .sidebar-links img {
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+}
+
+body[data-theme="dark"] header.topbar {
+    border-bottom-color: #4d4d4d;
+}
+
 body[data-theme="light"] {
-  --bg:      #f8f9fa;
-  --fg:      #24292e;
-  --border:  #e5e7eb;
+    --bg: #f8f9fa;
+    --fg: #24292e;
+    --border: #e5e7eb;
+    --sidebar-bg: #f1f1f1;
+    /* light gray */
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+code {
+    font-family: 'JetBrains Mono', monospace;
+    background-color: rgba(128, 128, 128, 0.1); /* subtle gray */
+    padding: 0.1em 0.4em;
+    border-radius: 4px;
+    font-size: 0.9em;
 }
 
 /* ----------  CSS VARIABLES / LIGHT MODE DEFAULTS  ---------- */
 :root {
-  --bg:       #f8f9fa;
-  --fg:       #24292e;
-  --accent:   #009380;   /* LoveIt purple */
-  --radius:   8px;
-  --max-width: 700px;
-  --border:   #e5e7eb;   /* light-mode border */
+    --bg: #f8f9fa;
+    --fg: #24292e;
+    --accent: #009380;
+    /* LoveIt purple */
+    --radius: 8px;
+    --max-width: 700px;
+    --border: #e5e7eb;
+    /* light-mode border */
 }
 
 /* ----------  CSS RESET  ---------- */
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 /* ----------  BASE STYLES  ---------- */
 body {
-  background: var(--bg);
-  color: var(--fg);
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  line-height: 1.6;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    padding-left: 160px;
+    
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+body a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+body a:hover,
+body a:focus {
+    color: #44b9a7;
 }
 
 main {
-  max-width: var(--max-width);
-  margin: 4rem auto;
-  padding: 0 1rem;
+    max-width: var(--max-width);
+    margin: 2rem 0 2rem 280px; /* top right bottom left */
+    padding: 0 1rem;
+    flex: 1 0 auto;
+    text-align: left;
+}
+
+main h1 {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+
+main h2 {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 400;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+}
+.cm-font {
+  font-family: 'Computer Modern', serif; /* or whatever your font-family name is */
+  font-style: normal; /* override italic if needed */
+  font-weight: normal; /* adjust weight if needed */
 }
 
 /* ----------  HEADER / NAV (with flex)  ---------- */
 header.topbar {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: var(--bg);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg);
 
-  border-bottom: 1px solid #d1d5db;
+    border-bottom: 1px solid #d1d5db;
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* max-width: var(--max-width);
+    margin: 0 auto; */
+
+    width: calc(100% - 560px); /* avoid the sidebar!!! */
+    margin-left: 280px;
+    padding: 2rem 1rem 0.75rem 1rem;
 }
 
 .nav-links {
-  display: flex;
-  gap: 2rem;
+    display: flex;
+    gap: 2rem;
 }
 
 .nav-link {
-  position: relative;
-  text-decoration: none;
-  color: var(--fg);
-  font-weight: 600;
+    position: relative;
+    text-decoration: none;
+    color: var(--fg);
+    font-weight: 600;
 }
+
 .nav-link::after {
-  content: "";
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--accent);
-  transition: width 0.2s ease;
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.2s ease;
 }
+
 .nav-link:hover::after,
 .nav-link.active::after {
-  width: 100%;
+    width: 100%;
 }
+
 .nav-link:hover {
-  color: var(--accent);
+    color: var(--accent);
 }
 
 .site-footer {
-  text-align: center;
-  font-size: 0.875rem;
-  color: var(--fg);
-  opacity: 0.6;
-  margin: 4rem 0 2rem;
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--fg);
+    opacity: 0.6;
+    margin: 4rem 0 2rem;
+    flex-shrink: 0;
+    /* footer stays at bottom */
 }
+
 .site-footer p {
-  margin: 0;
+    margin: 0;
 }
 
 /* ----------  THEME TOGGLE BUTTON  ---------- */
 #theme-toggle {
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  border: none;
-  background: transparent;
-  /* border: 2px solid var(--accent); */
-  /* background: var(--bg); */
-  color: var(--fg);
-  font-size: 1.2rem;
-  cursor: pointer;
-  line-height: 1;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    /* border: 2px solid var(--accent); */
+    /* background: var(--bg); */
+    color: var(--fg);
+    font-size: 1.2rem;
+    cursor: pointer;
+    line-height: 1;
 }
 
 #theme-toggle:hover {
-  background: var(--accent);
-  color: #fff;
+    background: var(--accent);
+    color: #fff;
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 1rem;
+}
+
+#site-logo {
+    height: 100px;
+    width: auto;
+}
+
+.center-logo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.center-logo img {
+    width: 60px;
+    height: auto;
+}
+
+.logo-caption {
+    font-size: 0.75rem;
+    color: #6c757d;
+    /* modify color to be like footer */
+    font-weight: 400;
+    margin-top: 0.25rem;
+    text-align: center;
+}
+
+.sidebar {
+    position: fixed;
+    font-family: 'JetBrains Mono', monospace;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100%;
+    background: var(--sidebar-bg);
+    border-right: 1px solid var(--border);
+    padding: 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1000;
+    text-align: center;
+}
+
+.sidebar-logo {
+    /* the mac */
+    width: auto;
+    height: 140px;
+    margin-bottom: 1rem;
+}
+
+.sidebar-name {
+    /* font-family: 'Pacifico', cursive; */
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: var(--fg);
+    text-align: center;
+}
+
+.sidebar-name a {
+    text-decoration: none;
+    color: var(--fg);
+    transition: color 0.2s ease;
+}
+
+.sidebar-name a:hover {
+    color: var(--accent);
+}
+
+.sidebar-links a {
+    display: inline-block;
+    margin: 0.5rem;
+}
+
+.sidebar-links img {
+    width: 24px;
+    height: 24px;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+    margin-top: 1rem;
+}
+
+.sidebar-links img:hover {
+    opacity: 1;
 }

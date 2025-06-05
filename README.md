@@ -1,0 +1,10 @@
+# Personal Website
+
+## Overview
+This is my personal website, a clean, minimalist theme featuring a sidebar, a theme toggle (light/dark), and content pages. Made with HTML/CSS, JavaScript, and Google Fonts.
+
+## Setup & Usage
+1. Clone or download the repository.
+2. Open `index.html` or `blog.html` in any modern browser.
+3. Modify content and styles in `style.css` and HTML files as needed.
+4. Images and icons stored in `images/` folder; replace with your own assets.

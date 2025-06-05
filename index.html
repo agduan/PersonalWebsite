@@ -1,56 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Home · My Obsidian-style Site</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>home | alexandraduan</title>
 
-  <!-- link the stylesheet -->
-  <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/computer-modern/1.0.0/css/computer-modern.min.css" rel="stylesheet" />
 </head>
+
 <body>
-  <!-- header/nav -->
-  <header class="topbar">
-    <nav class="nav-links">
-      <a href="index.html"   class="nav-link active">Home</a>
-      <a href="blog.html"    class="nav-link">Blog</a>
-      <!-- <a href="design.html"  class="nav-link">Design</a> -->
-    </nav>
-    <button id="theme-toggle" aria-label="Toggle dark mode">☼</button>
-  </header>
+    <div class="sidebar">
+        <img src="images/mac1.png" alt="Site logo" class="sidebar-logo">
+            <h1 class="sidebar-name">
+                <a href="https://alexandraduan.wiki/">alexandra duan</a>
+            </h1>
+            applied math & cs @ columbia
+            <div class="sidebar-links">
+                <a href="https://github.com/aduan-git" target="_blank" aria-label="GitHub">
+                    <img src="images/github-icon.png" alt="GitHub" />
+                </a>
+                <a href="https://linkedin.com/in/alexandra-duan/" target="_blank" aria-label="LinkedIn">
+                    <img src="images/linkedin-icon.png" alt="LinkedIn" />
+                </a>
+            </div>
+        </div>
+    </div>
 
-  <main>
-    <h2>Hello!</h2>
-    <p>I'm Alexandra (or Alex), a sophomore at Columbia studying Applied Math & CS.</p>
-  </main>
+    <!-- header/nav -->
+    <header class="topbar">
+        <nav class="nav-links">
+            <a href="index.html" class="nav-link active">Home</a>
+            <a href="blog.html" class="nav-link">Blog</a>
+        </nav>
+        <button id="theme-toggle" aria-label="Toggle dark mode">☼</button>
+    </header>
 
-  <!-- theme-toggle script at the end so DOM is ready -->
-<script>
-  const btn = document.getElementById('theme-toggle');
-  const stored  = localStorage.getItem('theme');
-  const prefers = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    <main>
+        <h1>$ home</h1>
+        <p>Hello! I'm Alexandra, a second-year at Columbia studying Applied Mathematics and Computer Science.</p>
+        <p>I'm interested in data, AI, and ??? usage across disciplines?. I'm currently working on developing a large knowledge model for hazard analysis at the  <a href="https://cris.cheme.columbia.edu/">Complex Resilient Intelligent Systems Lab</a>.</p>
+        <p>In my spare time, I visit the American Wing at the Met, quiz bowl, and am a mediocre birdwatcher.</p>
+        <p>Talk to me anytime at <code>alexandra [dot] duan [at] columbia [dot] edu</code>.</p>
 
-  // 1. Figure out initial mode
-  const initial = stored || prefers;
-  document.body.dataset.theme = initial;
+        <h2>$ cd "interests"</h2>
+        <a href="https://setwithforks-dev.web.app/">Set with Friends</a> (the <a href="https://setwithfriends.com/">original website</a> still works, but is no longer being updated). Alternatively, you can always play in person! There will always exist someone willing to play with you. One can prove this by example using me. (Further exercises have been left to the reader.)
+    </main>
 
-  // 2. Set the correct icon
-  btn.textContent = (initial === 'dark') ? '☾' : '☼';
+    <!-- theme-toggle script at the end so DOM is ready -->
+    <script>
+        const btn = document.getElementById('theme-toggle');
+        const stored = localStorage.getItem('theme');
+        const prefers = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 
-  // 3. Toggle on click
-  btn.onclick = () => {
-    const next = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
-    document.body.dataset.theme = next;
-    localStorage.setItem('theme', next);
+        // 1. Figure out initial mode
+        const initial = stored || prefers;
+        document.body.dataset.theme = initial;
 
-    // Swap the icon
-    btn.textContent = (next === 'dark') ? '☾' : '☼';
-  };
-</script>
+        // 2. Set the correct icon
+        btn.textContent = (initial === 'dark') ? '☾' : '☼';
 
-<footer class="site-footer">
-  <p>© 2025 Alexandra Duan</p>
-</footer>
+        // 3. Toggle on click
+        btn.onclick = () => {
+            const next = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+            document.body.dataset.theme = next;
+            localStorage.setItem('theme', next);
+
+            // Swap the icon
+            btn.textContent = (next === 'dark') ? '☾' : '☼';
+        };
+    </script>
+
+    <footer class="site-footer">
+        <p>© 2025 Alexandra Duan</p>
+    </footer>
 
 </body>
+
 </html>
