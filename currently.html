@@ -29,22 +29,20 @@
 		</div>
 	</div>
 
-	<!-- header/nav -->
+	<!-- HEADER/NAV -->
 	<header class="topbar">
 		<nav class="nav-links">
 			<a href="index.html" class="nav-link">Home</a>
-            <a href="currently.html" class="nav-link">Currently</a>
-			<a href="blog.html" class="nav-link active">Blog</a>
+      <a href="currently.html" class="nav-link active">Currently</a>
+			<a href="blog.html" class="nav-link">Blog</a>
 		</nav>
 		<button id="theme-toggle" aria-label="Toggle dark mode">☼</button>
 	</header>
 
 	<main>
-		<h1>$ blog</h1>
-		<p>Sometimes I write here.</p>
 	</main>
 
-	<!-- theme-toggle script at the end so DOM is ready -->
+	<!-- THEME TOGGLING -->
 	<script>
 		const btn = document.getElementById('theme-toggle');
 		const stored = localStorage.getItem('theme');
@@ -69,7 +67,7 @@
 	</script>
 
 	<footer class="site-footer">
-		<p>© 2025 Alexandra Duan</p>
+		<p>© 2025 Alexandra Duan | "Currently" page inspired by <a href="https://tommytrinh.me/currently/">Tommy Trinh</a></p>.
 	</footer>
 
 </body>

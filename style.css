@@ -98,9 +98,15 @@ main h1 {
 main h2 {
     font-family: 'JetBrains Mono', monospace;
     font-weight: 400;
-    margin-top: 2.5rem;
+    margin-top: 2rem;
     margin-bottom: 1rem;
 }
+
+main h3 {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 400;
+}
+
 .cm-font {
   font-family: 'Computer Modern', serif; /* or whatever your font-family name is */
   font-style: normal; /* override italic if needed */
