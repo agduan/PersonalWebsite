@@ -1,7 +1,7 @@
 # Personal Website
 
 ## Overview
-This is my [personal website](https://alexandraduan.wiki), a simple, minimalist theme featuring a sidebar, a theme toggle (light/dark), and content pages. Made with HTML/CSS, JavaScript, and Google Fonts.
+This is my [personal website](https://alexandraduan.wiki), a simple, minimalist theme featuring a sidebar, a theme toggle (light/dark), and content pages. Made with HTML/CSS, JavaScript, and Google Fonts. Currently working on integrating a Markdown reader.
 
 ## Setup & Usage
 1. Clone or download the repository.
