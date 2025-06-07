@@ -272,3 +272,39 @@ header.topbar {
 .sidebar-links img:hover {
     opacity: 1;
 }
+
+/* ----------  SIDEBAR: MOBILE TOGGLING  ---------- */
+@media (max-width: 768px) {
+  body {
+    padding-left: 0;
+  }
+
+  header.topbar {
+    width: 100%;
+    margin-left: 0;
+    padding: 1rem;
+  }
+
+  .sidebar {
+    position: static;
+    width: 100%;
+    background: var(--sidebar-bg);
+    padding: 0.75rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: center;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.2;
+  }
+
+  .sidebar li,
+  .sidebar a {
+    margin: 0;
+    padding: 0;
+  }
+
+  main {
+    margin: 2rem auto;
+  }
+}
