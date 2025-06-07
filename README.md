@@ -5,12 +5,12 @@ This is my [personal website](https://alexandraduan.wiki), a simple, minimalist 
 
 ## Setup & Usage
 1. Clone or download the repository.
-2. Open `index.html` or `blog.html` in any modern browser.
+2. Open `index.html` in any modern browser.
 3. Modify content and styles in `style.css` and HTML files as needed.
 4. Images and icons are stored in the `images/` folder; replace with your own assets as needed.
 
 ## Themes
-You can toggle between a light and a dark theme using the sun/moon icon in the upper-right-hand corner.
+Toggle between the light and dark themes using the sun/moon icon in the upper-right-hand corner.
 <p align="center">
   <img src="images/sample-light.png" alt="Light mode"><br>
   <em>Light mode</em>
