@@ -84,8 +84,8 @@ main {
     max-width: var(--max-width);
     margin: 2rem auto; /* top right bottom left */
     padding: 0 1rem;
-    flex: 1 0 auto;
-    text-align: left;
+    /* flex: 1 0 auto;
+    text-align: left; */
 
     width: calc(100vw - 280px);    /* fill remaining space after sidebar */
     box-sizing: border-box;
@@ -117,15 +117,14 @@ header.topbar {
 
     border-bottom: 1px solid #d1d5db;
 
+    max-width: var(--max-width); /* 700px */
+    margin: 2rem auto 0 280px;
+    padding: 2rem 1rem 0.75rem 1rem;
+    box-sizing: border-box;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* max-width: var(--max-width);
-    margin: 0 auto; */
-
-    width: calc(100% - 560px); /* avoid the sidebar!!! */
-    margin-left: 280px;
-    padding: 2rem 1rem 0.75rem 1rem;
 }
 
 .nav-links {
@@ -283,7 +282,7 @@ header.topbar {
   }
 
   header.topbar {
-    width: 100%;
+    width: 100vw;
     margin-left: 0;
     padding: 1rem;
   }
