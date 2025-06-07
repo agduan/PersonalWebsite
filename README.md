@@ -11,13 +11,12 @@ This is my [personal website](https://alexandraduan.wiki), a simple, minimalist 
 
 ## Themes
 You can toggle between a light and a dark theme using the sun/moon icon in the upper-right-hand corner.
-<div style="display: flex; justify-content: center; gap: 2rem;">
-  <figure style="text-align: center;">
-    <img src="images/sample-light.png" alt="Light mode" width="300">
-    <figcaption style="font-size: 0.9rem; color: gray; margin-top: 0.5rem;">Light mode</figcaption>
-  </figure>
-  <figure style="text-align: center;">
-    <img src="images/sample-dark.png" alt="Dark mode" width="300">
-    <figcaption style="font-size: 0.9rem; color: gray; margin-top: 0.5rem;">Dark mode</figcaption>
-  </figure>
-</div>
+<p align="center">
+  <img src="images/sample-light.png" alt="Light mode"><br>
+  <em>Light mode</em>
+</p>
+
+<p align="center">
+  <img src="images/sample-dark.png" alt="Dark mode"><br>
+  <em>Dark mode</em>
+</p>
