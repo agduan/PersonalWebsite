@@ -62,7 +62,7 @@ body {
     color: var(--fg);
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     line-height: 1.6;
-    padding-left: 280px; /* changed from 160 px here for centered viewing */
+    padding-left: 160px;
     
     display: flex;
     flex-direction: column;
@@ -82,13 +82,10 @@ body a:focus {
 
 main {
     max-width: var(--max-width);
-    margin: 2rem auto; /* top right bottom left */
+    margin: 2rem 0 2rem 280px; /* top right bottom left */
     padding: 0 1rem;
     flex: 1 0 auto;
     text-align: left;
-
-    width: calc(100vw - 280px);    /* fill remaining space after sidebar */
-    box-sizing: border-box;
 }
 
 main h1,
@@ -309,8 +306,6 @@ header.topbar {
 
   main {
     margin: 2rem auto;
-    width: 100vw; /* full width */
-    padding: 0 1rem;
   }
 
   main ul, main ol {
