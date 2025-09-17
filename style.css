@@ -313,3 +313,6 @@ header.topbar {
         overflow-x: visible;
     }
 }
+.skills-list {
+    margin-left: 2rem;
+}
