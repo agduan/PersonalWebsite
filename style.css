@@ -87,7 +87,7 @@ a {
 }
 a:hover,
 a:focus {
-    color: #44b9a7;
+    color: color-mix(in srgb, var(--accent) 80%, white);
 }
 
 /* LAYOUT */
@@ -415,6 +415,38 @@ body[data-theme="dark"] .set-card-choice:hover .set-card {
 
 body[data-theme="dark"] .set-card-choice.active .set-card {
     box-shadow: 0 0 5px 2px rgba(255, 255, 255, 0.1);
+}
+
+/* OBSIDIAN-STYLE INFO BOX */
+.info-box {
+    background: color-mix(in srgb, var(--accent) 10%, var(--bg));
+    border-left: 4px solid var(--accent);
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+    position: relative;/* 
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); */
+}
+
+.info-box::before {
+    position: absolute;
+    top: 1rem;
+    left: 1.25rem;
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
+.info-box p {
+    margin: 0;
+    padding-left: 1.2rem;
+    color: var(--fg);
+    opacity: 0.9;
+}
+
+/* Dark theme adjustments for info box */
+body[data-theme="dark"] .info-box {
+    background: color-mix(in srgb, var(--accent) 15%, var(--bg));
+    box-shadow: 0 1px 3px rgba(255, 255, 255, 0.1);
 }
 
 /* DESIGN (PORTFOLIO GALLERY) */
