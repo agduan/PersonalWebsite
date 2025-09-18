@@ -165,7 +165,7 @@ header.topbar {
     background: var(--bg);
     color: var(--fg);
     border-bottom: 1px solid var(--bg);
-    margin-bottom: -1px;
+    margin-bottom: 0px;
     z-index: 2;
 }
 
