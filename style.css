@@ -339,7 +339,7 @@ header.topbar {
     opacity: 1;
 }
 
-/* ACCENT COLOR PICKER */
+/* ACCENT COLOR PICKER - SET CARD STYLE */
 .color-picker-label {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.8rem;
@@ -349,31 +349,72 @@ header.topbar {
     margin-bottom: 0.5rem;
 }
 
-.color-choices {
+.set-card-choices {
     display: flex;
     gap: 0.5rem;
     justify-content: center;
+    align-items: center;
 }
 
-.color-choice {
-    width: 1.5rem;
-    height: 1.5rem;
-    border: 2px solid var(--border);
-    border-radius: 50%;
+.set-card-choice {
     cursor: pointer;
     transition: all 0.2s ease;
-    padding: 0;
+    border-radius: 6px;
+    padding: 2px;
 }
 
-.color-choice:hover {
-    transform: scale(1.2);
-    border-color: var(--fg);
+.set-card-choice:hover {
+    transform: translateY(-2px);
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); */
 }
 
-.color-choice.active {
-    border-color: var(--fg);
-    border-width: 3px;
+.set-card-choice.active {
+    transform: translateY(-4px);
+}
+
+.set-card {
+    width: 60px;
+    height: 40px;
+    background: #fff;
+    /* border: 1px solid var(--border); */
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.set-card-choice:hover .set-card {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.set-card-choice.active .set-card {
+    border-color: var(--accent);
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.1);
+}
+
+.set-symbol {
+    transition: all 0.2s ease;
+}
+
+.set-card-choice:hover .set-symbol {
     transform: scale(1.1);
+}
+
+/* Dark theme adjustments for Set cards */
+body[data-theme="dark"] .set-card {
+    background: #3a3a3a;
+    border-color: #555;
+}
+
+body[data-theme="dark"] .set-card-choice:hover .set-card {
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+body[data-theme="dark"] .set-card-choice.active .set-card {
+    box-shadow: 0 0 5px 2px rgba(255, 255, 255, 0.1);
 }
 
 /* DESIGN (PORTFOLIO GALLERY) */
