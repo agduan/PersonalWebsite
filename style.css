@@ -80,7 +80,7 @@ a {
 }
 a:hover,
 a:focus {
-    color: #44b9a7;
+    color: var(--accent);
 }
 
 /* LAYOUT */
@@ -158,7 +158,7 @@ header.topbar {
     margin-right: -1px;
 }
 .nav-link:hover {
-    background: rgba(0, 147, 128, 0.1);
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
     color: var(--accent);
 }
 .nav-link.active {
@@ -234,19 +234,47 @@ header.topbar {
 .sidebar-name a:hover {
     color: var(--accent);
 }
-.sidebar-links a {
-    display: inline-block;
-    margin: 0.5rem;
+.sidebar-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0rem;
+    margin-top: 1rem;
+    width: 100%;
+}
+.sidebar-link-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem;
+    border-radius: var(--radius);
+    transition: background-color 0.2s ease;
+    text-decoration: none;
+    color: var(--fg);
 }
 .sidebar-links img {
     width: 24px;
     height: 24px;
     opacity: 0.8;
     transition: opacity 0.2s ease;
-    margin-top: 1rem;
+    flex-shrink: 0;
 }
 .sidebar-links img:hover {
     opacity: 1;
+}
+.sidebar-link-text {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+/* SIDEBAR THEME SECTION */
+.sidebar-theme-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+    width: 100%;
 }
 
 /* THEME TOGGLE BUTTON */
@@ -260,10 +288,80 @@ header.topbar {
     font-size: 1.2rem;
     cursor: pointer;
     line-height: 1;
+    transition: all 0.2s ease;
 }
 #theme-toggle:hover {
-    background: var(--accent);
-    color: #fff;
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
+    color: var(--accent);
+}
+
+.theme-subtitle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--fg);
+    opacity: 0.7;
+}
+
+.theme-arrow {
+    font-size: 0.9rem;
+    transition: transform 0.2s ease;
+}
+
+.theme-text {
+    font-weight: 500;
+}
+
+/* SIDEBAR COLOR SECTION */
+.sidebar-color-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    width: 100%;
+}
+
+.color-picker-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--fg);
+    opacity: 0.7;
+    font-weight: 500;
+}
+
+.color-choices {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.color-choice {
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 2px solid var(--border);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 0;
+}
+
+.color-choice:hover {
+    transform: scale(1.2);
+    border-color: var(--fg);
+}
+
+.color-choice.active {
+    border-color: var(--fg);
+    border-width: 3px;
+    transform: scale(1.1);
+}
+
+/* Hide mobile theme toggle on desktop */
+.mobile-theme-toggle {
+    display: none;
 }
 
 /* FOOTER */
@@ -354,6 +452,9 @@ header.topbar {
         width: 100%;
         margin-left: 0;
         padding: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
     .sidebar {
         position: static;
@@ -368,6 +469,54 @@ header.topbar {
         line-height: 1.2;
     }
     .sidebar li, .sidebar a { margin: 0; padding: 0; }
+    
+    /* Mobile: Keep sidebar links side-by-side */
+    .sidebar-links {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 0.5rem;
+    }
+    .sidebar-link-item {
+        flex-direction: column;
+        gap: 0.25rem;
+        padding: 0.25rem;
+    }
+    .sidebar-link-text {
+        font-size: 0.75rem;
+    }
+    
+    /* Hide theme section in sidebar on mobile */
+    .sidebar-theme-section {
+        display: none;
+    }
+    
+    /* Hide color picker on mobile */
+    .sidebar-color-section {
+        display: none;
+    }
+    
+    /* Show mobile theme toggle and hide desktop one */
+    .mobile-theme-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        border: none;
+        background: transparent;
+        color: var(--fg);
+        font-size: 1.2rem;
+        cursor: pointer;
+        line-height: 1;
+        transition: all 0.2s ease;
+    }
+    .mobile-theme-toggle:hover {
+        background: var(--accent);
+        color: #fff;
+    }
+    
     main { margin: 2rem auto; }
     main ul, main ol { padding-left: 1.25rem; margin-left: 0; }
 

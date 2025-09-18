@@ -19,12 +19,30 @@
             </h1>
             applied math & cs @ columbia
             <div class="sidebar-links">
-                <a href="https://github.com/agduan" target="_blank" aria-label="GitHub">
+                <a href="https://github.com/agduan" target="_blank" aria-label="GitHub" class="sidebar-link-item">
                     <img src="images/github-icon.png" alt="GitHub" />
+                    <span class="sidebar-link-text">agduan</span>
                 </a>
-                <a href="https://linkedin.com/in/alexandra-duan/" target="_blank" aria-label="LinkedIn">
+                <a href="https://linkedin.com/in/alexandra-duan/" target="_blank" aria-label="LinkedIn" class="sidebar-link-item">
                     <img src="images/linkedin-icon.png" alt="LinkedIn" />
+                    <span class="sidebar-link-text">alexandra-duan</span>
                 </a>
+            </div>
+            <br>
+            <div class="sidebar-theme-section">
+                <button id="theme-toggle" aria-label="Toggle dark mode">☼</button>
+                <div class="theme-subtitle">
+                    <span class="theme-text">turn the lights off</span>
+                </div>
+            </div>
+            
+            <div class="sidebar-color-section">
+                <div class="color-picker-label">accent color</div>
+                <div class="color-choices">
+                    <button class="color-choice" data-color="#009380" style="background-color: #009380;" aria-label="Green accent color"></button>
+                    <button class="color-choice" data-color="#CB0B0B" style="background-color: #CB0B0B;" aria-label="Red accent color"></button>
+                    <button class="color-choice" data-color="#0476C8" style="background-color: #0476C8;" aria-label="Blue accent color"></button>
+                </div>
             </div>
         </div>
     </div>
@@ -46,7 +64,7 @@
             </a>
             <!-- <a href="blog.html" class="nav-link">Blog</a> -->
         </nav>
-        <button id="theme-toggle" aria-label="Toggle dark mode">☼</button>
+        <button id="theme-toggle-mobile" aria-label="Toggle dark mode" class="mobile-theme-toggle">☼</button>
     </header>
 
     <main>
@@ -71,25 +89,72 @@
     <!-- theme-toggle script -->
     <script>
         const btn = document.getElementById('theme-toggle');
+        const btnMobile = document.getElementById('theme-toggle-mobile');
+        const themeText = document.querySelector('.theme-text');
+        const colorChoices = document.querySelectorAll('.color-choice');
         const stored = localStorage.getItem('theme');
+        const storedAccentColor = localStorage.getItem('accentColor');
         const prefers = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 
         // 1. Figure out initial mode
         const initial = stored || prefers;
         document.body.dataset.theme = initial;
 
-        // 2. Set the correct icon
-        btn.textContent = (initial === 'dark') ? '☾' : '☼';
+        // 2. Set initial accent color
+        if (storedAccentColor) {
+            document.documentElement.style.setProperty('--accent', storedAccentColor);
+            // Mark the active color choice
+            colorChoices.forEach(choice => {
+                choice.classList.remove('active');
+                if (choice.dataset.color === storedAccentColor) {
+                    choice.classList.add('active');
+                }
+            });
+        } else {
+            // Default to first color choice (green)
+            colorChoices[0].classList.add('active');
+        }
 
-        // 3. Toggle on click
-        btn.onclick = () => {
+        // 3. Set the correct icon and text
+        const updateThemeDisplay = (theme) => {
+            const icon = theme === 'dark' ? '☾' : '☼';
+            const text = theme === 'dark' ? 'turn the lights on?' : 'turn the lights off?';
+            
+            btn.textContent = icon;
+            btnMobile.textContent = icon;
+            themeText.textContent = text;
+        };
+
+        updateThemeDisplay(initial);
+
+        // 4. Toggle function
+        const toggleTheme = () => {
             const next = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
             document.body.dataset.theme = next;
             localStorage.setItem('theme', next);
-
-            // Swap the icon
-            btn.textContent = (next === 'dark') ? '☾' : '☼';
+            updateThemeDisplay(next);
         };
+
+        // 5. Color choice function
+        const updateAccentColor = (color) => {
+            document.documentElement.style.setProperty('--accent', color);
+            localStorage.setItem('accentColor', color);
+            
+            // Update active state
+            colorChoices.forEach(choice => {
+                choice.classList.remove('active');
+                if (choice.dataset.color === color) {
+                    choice.classList.add('active');
+                }
+            });
+        };
+
+        // 6. Add event listeners
+        btn.onclick = toggleTheme;
+        btnMobile.onclick = toggleTheme;
+        colorChoices.forEach(choice => {
+            choice.addEventListener('click', () => updateAccentColor(choice.dataset.color));
+        });
     </script>
 
     <footer class="site-footer">
