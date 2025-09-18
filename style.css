@@ -27,9 +27,6 @@ body[data-theme="dark"] .sidebar-links img {
     filter: brightness(0) invert(1);
     opacity: 0.9;
 }
-body[data-theme="dark"] header.topbar {
-    border-bottom-color: #4d4d4d;
-}
 body[data-theme="dark"] .nav-link {
     background: #3a3a3a;
     border-color: #555;
@@ -105,7 +102,6 @@ header.topbar {
     top: 0;
     z-index: 100;
     background: var(--bg);
-    border-bottom: 1px solid #d1d5db;
     display: flex;
     align-items: center;
     justify-content: space-between;
