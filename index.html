@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>home | alexandraduan</title>
+    <title>Alexandra Duan</title>
 
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" href="images/favicon.ico" type="image/x-icon"/>
@@ -14,11 +14,18 @@
 <body>
     <!-- header/nav -->
     <header class="topbar">
-        <div class="header-brand">
-            <h1 class="site-name">
-                <a href="https://alexandraduan.wiki/">alexandra duan</a>
-            </h1>
-            <p class="site-subtitle">applied math & cs @ columbia</p>
+        <div class="header-top">
+            <div class="header-brand">
+                <h1 class="site-name">
+                    <a href="https://alexandraduan.wiki/">alexandra duan</a>
+                </h1>
+                <p style="font-size: 0.9rem; color: var(--fg); opacity: 0.7; margin: 0.1rem 0 0 0; font-family: 'JetBrains Mono', monospace;">applied math & cs @ columbia</p>
+            </div>
+            <div class="theme-toggle-container">
+                <button id="theme-toggle" aria-label="Toggle dark mode">☼</button>
+                <p class="theme-toggle-text">turn the</p>
+                <p class="theme-toggle-text" id="theme-toggle-text">lights on?</p>
+            </div>
         </div>
         
         <div class="header-bottom">
@@ -27,12 +34,12 @@
 					<span class="tab-title">home</span>
 					<span class="tab-close">×</span>
 				</a>
-				<a href="currently.html" class="nav-link">
-					<span class="tab-title">currently</span>
-					<span class="tab-close">×</span>
-				</a>
 				<a href="design.html" class="nav-link">
 					<span class="tab-title">design</span>
+					<span class="tab-close">×</span>
+				</a>
+				<a href="currently.html" class="nav-link">
+					<span class="tab-title">currently</span>
 					<span class="tab-close">×</span>
 				</a>
 				<!-- <a href="blog.html" class="nav-link">Blog</a> -->
@@ -47,14 +54,13 @@
                         <img src="images/linkedin-icon.png" alt="LinkedIn" />
                     </a>
                 </div>
-                <button id="theme-toggle" aria-label="Toggle dark mode">☼</button>
             </div>
         </div>
     </header>
 
     <main>
-        <h1>$ home</h1>
-        <p>Hello! I'm Alexandra, a second-year at Columbia studying Applied Mathematics and Computer Science.</p>
+        <h1 style="text-align: center;">Hello! I'm Alexandra.</h1>
+        <p>I'm a second-year at Columbia studying Applied Mathematics and Computer Science.</p>
         <p>I'm interested in <b>data, AI/ML, healthtech, and design</b>. In my spare time, I read <a href="https://agduan.github.io/EssayStack/">essays</a> and sci-fi, <a href="https://alexandraduan.wiki/design.html">design stickers</a> for my laptop, play Set, scroll Wikipedia pages on music history with Columbia Quiz Bowl, and am a mediocre birdwatcher.</p>
         <p>Talk to me anytime at <code>alexandra [dot] duan [at] columbia [dot] edu</code>.</p>
 
@@ -63,7 +69,7 @@
 
         <h2>$ ls "programming experience"</h2>
         <p>I like to program...</p>
-        <ul class="skills-list">
+        <ul style="margin-left: 2rem;">
             <li><strong>in:</strong> Python, Java, C/C++, JavaScript, HTML/CSS</li>
             <li><strong>using:</strong> React, Node.js, Express, Socket.IO, Visual Studio Code (light mode)</li>
         </ul>
@@ -73,30 +79,81 @@
 
     <!-- theme-toggle script -->
     <script>
-        const btn = document.getElementById('theme-toggle');
-        const stored = localStorage.getItem('theme');
-        const prefers = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.addEventListener('DOMContentLoaded', function() {
+            const btn = document.getElementById('theme-toggle');
+            const text = document.getElementById('theme-toggle-text');
+            const colorChoices = document.querySelectorAll('.color-choice');
+            const stored = localStorage.getItem('theme');
+            const storedAccentColor = localStorage.getItem('accentColor');
+            const prefers = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 
         // 1. Figure out initial mode
         const initial = stored || prefers;
         document.body.dataset.theme = initial;
 
-        // 2. Set the correct icon
-        btn.textContent = (initial === 'dark') ? '☾' : '☼';
+        // 2. Set initial accent color
+        if (storedAccentColor) {
+            document.documentElement.style.setProperty('--accent', storedAccentColor);
+            // Mark the active color choice
+            colorChoices.forEach(choice => {
+                choice.classList.remove('active');
+                if (choice.dataset.color === storedAccentColor) {
+                    choice.classList.add('active');
+                }
+            });
+        } else {
+            // Default to first color (green)
+            colorChoices[0].classList.add('active');
+        }
 
-        // 3. Toggle on click
+        // 3. Set the correct icon and text
+        btn.textContent = (initial === 'dark') ? '☾' : '☼';
+        text.textContent = (initial === 'dark') ? 'lights on?' : 'lights off?';
+
+        // 4. Toggle on click
         btn.onclick = () => {
             const next = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
             document.body.dataset.theme = next;
             localStorage.setItem('theme', next);
 
-            // Swap the icon
+            // Swap the icon and text
             btn.textContent = (next === 'dark') ? '☾' : '☼';
+            text.textContent = (next === 'dark') ? 'lights on?' : 'lights off?';
         };
+
+        // 5. Color choice function
+        const updateAccentColor = (color) => {
+            document.documentElement.style.setProperty('--accent', color);
+            localStorage.setItem('accentColor', color);
+            
+            // Update active state
+            colorChoices.forEach(choice => {
+                choice.classList.remove('active');
+                if (choice.dataset.color === color) {
+                    choice.classList.add('active');
+                }
+            });
+        };
+
+        // 6. Add click listeners to color choices
+        colorChoices.forEach(choice => {
+            choice.addEventListener('click', () => {
+                updateAccentColor(choice.dataset.color);
+            });
+        });
+        });
     </script>
 
     <footer class="site-footer">
-        <p>© 2025 Alexandra Duan</p>
+        <div class="color-picker-label">accent color</div>
+        <div class="color-choices">
+            <button class="color-choice" data-color="#009380" style="background-color: #009380;" aria-label="Green accent color"></button>
+            <button class="color-choice" data-color="#CB0B0B" style="background-color: #CB0B0B;" aria-label="Red accent color"></button>
+            <button class="color-choice" data-color="#0476C8" style="background-color: #0476C8;" aria-label="Blue accent color"></button>
+        </div>
+        
+        <br>
+        <p>© Made by Alexandra Duan · <a href="https://github.com/agduan">GitHub</a></p>
     </footer>
 
 </body>
