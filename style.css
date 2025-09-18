@@ -455,14 +455,16 @@ header.topbar {
     }
     
     .header-bottom {
-        flex-direction: column;
-        gap: 1rem;
+        flex-direction: row;
+        gap: 0.5rem;
+        align-items: flex-end;
     }
     
     .nav-links {
         gap: 0;
-        flex-wrap: wrap;
-        justify-content: center;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        flex: 1;
     }
     
     .nav-link {
