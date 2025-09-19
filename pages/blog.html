@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>blog | alexandraduan</title>
+
+	<link rel="stylesheet" href="../style.css" />
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon"/>
+	<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/computer-modern/1.0.0/css/computer-modern.min.css" rel="stylesheet" />
+</head>
+
+<body>
+	<!-- header/nav -->
+	<header class="topbar">
+		<div class="header-brand">
+			<h1 class="site-name">
+				<a href="https://alexandraduan.wiki/">alexandra duan</a>
+			</h1>
+			<p style="font-size: 0.9rem; color: var(--fg); opacity: 0.7; margin: 0.1rem 0 0 0; font-family: 'JetBrains Mono', monospace;">applied math & cs @ columbia</p>
+		</div>
+		
+		<div class="header-bottom">
+			<nav class="nav-links">
+				<a href="../index.html" class="nav-link">
+					<span class="tab-title">home</span>
+					<span class="tab-close">×</span>
+				</a>
+				<a href="../currently.html" class="nav-link">
+					<span class="tab-title">currently</span>
+					<span class="tab-close">×</span>
+				</a>
+				<a href="../design.html" class="nav-link">
+					<span class="tab-title">design</span>
+					<span class="tab-close">×</span>
+				</a>
+				<a href="blog.html" class="nav-link active">
+					<span class="tab-title">blog</span>
+					<span class="tab-close">×</span>
+				</a>
+			</nav>
+			
+			<div class="header-actions">
+				<div class="social-links">
+					<a href="https://github.com/agduan" target="_blank" aria-label="GitHub">
+						<img src="../images/github-icon.png" alt="GitHub" />
+					</a>
+					<a href="https://linkedin.com/in/alexandra-duan/" target="_blank" aria-label="LinkedIn">
+						<img src="../images/linkedin-icon.png" alt="LinkedIn" />
+					</a>
+				</div>
+				<button id="theme-toggle" aria-label="Toggle dark mode">☼</button>
+			</div>
+		</div>
+	</header>
+
+	<main>
+		<h1>$ blog</h1>
+		You've made it to a secret page of the website...
+		<div id="blog-container"></div>
+	</main>
+
+	<script>
+		// MARKDOWN IMPORTS
+		const files = ['currently.md']; // display order
+    const container = document.getElementById('blog-container');
+
+    files.forEach(filename => {
+			fetch(`files/${filename}`)
+				.then(res => {
+					if (!res.ok) throw new Error(`Could not load ${filename}`);
+					return res.text();
+				})
+				.then(md => {
+					const article = document.createElement('article');
+					article.classList.add('blog-post');
+					article.innerHTML = marked.parse(md);
+					container.appendChild(article);
+				})
+				.catch(err => {
+					console.error(err);
+					const errorDiv = document.createElement('div');
+					errorDiv.textContent = `Failed to load ${filename}`;
+					container.appendChild(errorDiv);
+				});
+		});
+
+		// TOGGLING
+		const btn = document.getElementById('theme-toggle');
+		const stored = localStorage.getItem('theme');
+		const prefers = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+
+		// 1. Figure out initial mode
+		const initial = stored || prefers;
+		document.body.dataset.theme = initial;
+
+		// 2. Set the correct icon
+		btn.textContent = (initial === 'dark') ? '☾' : '☼';
+
+		// 3. Toggle on click
+		btn.onclick = () => {
+			const next = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+			document.body.dataset.theme = next;
+			localStorage.setItem('theme', next);
+
+			// Swap the icon
+			btn.textContent = (next === 'dark') ? '☾' : '☼';
+		};
+	</script>
+
+	<footer class="site-footer">
+		<p>© 2025 Alexandra Duan</p>
+	</footer>
+
+</body>
+
+</html>

@@ -4,53 +4,63 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>currently | alexandraduan</title>
+	<title>Currently | Alexandra Duan</title>
 
 	<link rel="stylesheet" href="style.css" />
   <link rel="icon" href="images/favicon.ico" type="image/x-icon"/>
 	<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet" />
+	<script src="setCards.js"></script>
 </head>
 
 <body>
-	<div class="sidebar">
-		<img src="images/mac2.png" alt="Site logo" class="sidebar-logo">
-			<h1 class="sidebar-name">
-				<a href="https://alexandraduan.wiki/">alexandra duan</a>
-			</h1>
-			applied math & cs @ columbia
-			<div class="sidebar-links">
-				<a href="https://github.com/agduan" target="_blank" aria-label="GitHub">
-					<img src="images/github-icon.png" alt="GitHub" />
-				</a>
-				<a href="https://linkedin.com/in/alexandra-duan/" target="_blank" aria-label="LinkedIn">
-					<img src="images/linkedin-icon.png" alt="LinkedIn" />
-				</a>
+	<!-- header/nav -->
+	<header class="topbar">
+		<div class="header-top">
+			<div class="header-brand">
+				<h1 class="site-name">
+					<a href="https://alexandraduan.wiki/">alexandra duan<span style="color: #999;">.wiki</span></a>
+				</h1>
+				<p style="font-size: 0.9rem; color: var(--fg); opacity: 0.7; margin: 0.1rem 0 0 0; font-family: 'JetBrains Mono', monospace;">applied math & cs @ columbia</p>
+				<div class="social-links">
+					<a href="https://github.com/agduan" target="_blank" aria-label="GitHub">
+						<img src="images/github-icon.png" alt="GitHub" />
+					</a>
+					<a href="https://linkedin.com/in/alexandra-duan/" target="_blank" aria-label="LinkedIn">
+						<img src="images/linkedin-icon.png" alt="LinkedIn" />
+					</a>
+				</div>
+		</div>
+			<div class="theme-toggle-container">
+				<button id="theme-toggle" aria-label="Toggle dark mode">☼</button>
+				<p class="theme-toggle-text">turn the</p>
+				<p class="theme-toggle-text" id="theme-toggle-text">lights on?</p>
 			</div>
 		</div>
-	</div>
-
-	<!-- HEADER/NAV -->
-	<header class="topbar">
-		<nav class="nav-links">
-			<a href="index.html" class="nav-link">
-				<span class="tab-title">home</span>
-				<span class="tab-close">×</span>
-			</a>
-      <a href="currently.html" class="nav-link active">
-				<span class="tab-title">currently</span>
-				<span class="tab-close">×</span>
-			</a>
-			<a href="design.html" class="nav-link">
-				<span class="tab-title">design</span>
-				<span class="tab-close">×</span>
-			</a>
-			<!-- <a href="blog.html" class="nav-link">Blog</a> -->
-		</nav>
-		<button id="theme-toggle" aria-label="Toggle dark mode">☼</button>
+		
+		<div class="header-bottom">
+			<nav class="nav-links">
+				<a href="index.html" class="nav-link">
+					<span class="tab-title">home</span>
+					<span class="tab-close">×</span>
+				</a>
+				<a href="design.html" class="nav-link">
+					<span class="tab-title">design</span>
+					<span class="tab-close">×</span>
+				</a>
+				<a href="currently.html" class="nav-link active">
+					<span class="tab-title">currently</span>
+					<span class="tab-close">×</span>
+				</a>
+				<!-- <a href="blog.html" class="nav-link">Blog</a> -->
+			</nav>
+			
+			<div class="header-actions">
+			</div>
+		</div>
 	</header>
 
 	<main>
-    <h1 id="currently">$ currently</h1>
+    <h1 id="currently"><span style="color: #999;">$ home/</span>currently</h1>
     <em>What am I up to?</em>
 
 		<h2>$ ls “reading”</h2>
@@ -71,30 +81,108 @@
 
 	<!-- THEME TOGGLING -->
 	<script>
-		const btn = document.getElementById('theme-toggle');
-		const stored = localStorage.getItem('theme');
-		const prefers = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+		document.addEventListener('DOMContentLoaded', function() {
+			const btn = document.getElementById('theme-toggle');
+			const text = document.getElementById('theme-toggle-text');
+			const colorChoices = document.querySelectorAll('.color-choice');
+			const stored = localStorage.getItem('theme');
+			const storedAccentColor = localStorage.getItem('accentColor');
+			const prefers = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 
-		// 1. Figure out initial mode
-		const initial = stored || prefers;
-		document.body.dataset.theme = initial;
+			// 1. Figure out initial mode
+			const initial = stored || prefers;
+			document.body.dataset.theme = initial;
 
-		// 2. Set the correct icon
-		btn.textContent = (initial === 'dark') ? '☾' : '☼';
+		// 2. Set initial accent color
+		if (storedAccentColor) {
+			document.documentElement.style.setProperty('--accent', storedAccentColor);
+			// Mark the active Set card choice
+			const setCardChoices = document.querySelectorAll('.set-card-choice');
+			setCardChoices.forEach(choice => {
+				choice.classList.remove('active');
+				if (choice.dataset.color === storedAccentColor) {
+					choice.classList.add('active');
+				}
+			});
+		} else {
+			// Default to first color (green)
+			const setCardChoices = document.querySelectorAll('.set-card-choice');
+			if (setCardChoices.length > 0) {
+				setCardChoices[0].classList.add('active');
+			}
+		}
 
-		// 3. Toggle on click
-		btn.onclick = () => {
-			const next = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
-			document.body.dataset.theme = next;
-			localStorage.setItem('theme', next);
+			// 3. Set the correct icon and text
+			btn.textContent = (initial === 'dark') ? '☾' : '☼';
+			text.textContent = (initial === 'dark') ? 'lights on?' : 'lights off?';
 
-			// Swap the icon
-			btn.textContent = (next === 'dark') ? '☾' : '☼';
+			// 4. Toggle on click
+			btn.onclick = () => {
+				const next = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+				document.body.dataset.theme = next;
+				localStorage.setItem('theme', next);
+
+				// Swap the icon and text
+				btn.textContent = (next === 'dark') ? '☾' : '☼';
+				text.textContent = (next === 'dark') ? 'lights on?' : 'lights off?';
+			};
+
+		// 5. Color choice function
+		const updateAccentColor = (color) => {
+			document.documentElement.style.setProperty('--accent', color);
+			localStorage.setItem('accentColor', color);
+			
+			// Update active state for Set cards
+			const setCardChoices = document.querySelectorAll('.set-card-choice');
+			setCardChoices.forEach(choice => {
+				choice.classList.remove('active');
+				if (choice.dataset.color === color) {
+					choice.classList.add('active');
+				}
+			});
 		};
+
+		// 6. Add click listeners to Set card choices
+		const setCardChoices = document.querySelectorAll('.set-card-choice');
+			setCardChoices.forEach(choice => {
+				choice.addEventListener('click', () => {
+					updateAccentColor(choice.dataset.color);
+				});
+			});
+		});
 	</script>
 
 	<footer class="site-footer">
-		<p>© 2025 Alexandra Duan | "Currently" page inspired by <a href="https://tommytrinh.me/currently/">Tommy Trinh</a>.</p>
+		<div class="color-picker-label">You've found a <a href="https://setwithfriends.com/">Set</a>! Can you beat Alexandra's record of <span style="background-color: var(--accent); color: white; padding: 0.1em 0.3em; border-radius: 3px; font-weight: 600;">1:34</span>?</div>
+		<div class="set-card-choices">
+			<div class="set-card-choice" data-color="#009380" aria-label="Green squiggle accent color">
+				<div class="set-card">
+					<svg class="set-symbol" width="24" height="24" viewBox="0 0 200 400">
+						<use href="#squiggle" fill="#009380" />
+						<use href="#squiggle" stroke="#009380" fill="none" stroke-width="18" />
+					</svg>
+				</div>
+			</div>
+			<div class="set-card-choice" data-color="#CB0B0B" aria-label="Red oval accent color">
+				<div class="set-card">
+					<svg class="set-symbol" width="24" height="24" viewBox="0 0 200 400">
+						<use href="#oval" fill="#CB0B0B" />
+						<use href="#oval" stroke="#CB0B0B" fill="none" stroke-width="18" />
+					</svg>
+				</div>
+			</div>
+			<div class="set-card-choice" data-color="#0476C8" aria-label="Blue diamond accent color">
+				<div class="set-card">
+					<svg class="set-symbol" width="24" height="24" viewBox="0 0 200 400">
+						<use href="#diamond" fill="#0476C8" />
+						<use href="#diamond" stroke="#0476C8" fill="none" stroke-width="18" />
+					</svg>
+				</div>
+			</div>
+		</div>
+		
+		<br>
+		<p>© Made by Alexandra Duan · <a href="https://github.com/agduan">GitHub</a></p>
 	</footer>
 
 </body>
