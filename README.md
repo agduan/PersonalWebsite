@@ -1,6 +1,6 @@
 # Personal Website
 
-This is my [personal website](https://alexandraduan.wiki), a clean, modern theme to showcase my work and interests. The site features a responsive design with tabbed navigation, dynamic theme switching, and interactive elements. Made with HTML/CSS, and JavaScript.
+This is my [personal website](https://alexandraduan.wiki), featuring a clean, modern theme made to showcase my work and interests. The site has a responsive design with tabbed navigation, dynamic theme switching, and interactive elements. Made with HTML/CSS, and JavaScript.
 
 ## Setup & Usage
 1. Clone or download the repository.
