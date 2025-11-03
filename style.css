@@ -174,16 +174,6 @@ header.topbar {
     margin-bottom: -1px;
     z-index: 2;
 }
-/* .nav-link.active::before {
-    content: "";
-    position: absolute;
-    top: -1px;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: var(--accent);
-    border-radius: 8px 8px 0 0;
-} */
 
 .tab-title {
     flex: 1;
@@ -445,6 +435,18 @@ body[data-theme="dark"] .set-card-choice.active .set-card {
     padding-left: 0.8rem;
     color: var(--fg);
     opacity: 0.9;
+}
+
+.info-box code {
+    background: none;
+    padding: 0;
+}
+
+.info-box code .info-label {
+    background: none;
+    padding: 0;
+    font-weight: bold;
+    color: var(--accent);
 }
 
 /* Dark theme adjustments for info box */
