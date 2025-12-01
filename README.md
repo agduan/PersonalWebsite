@@ -9,30 +9,16 @@ This is my [personal website](https://alexandraduan.wiki), featuring a modern, r
 4. Images and icons are stored in the `images/` folder, and portfolio images are stored in `images/design/'. Replace with your own assets as needed.
 
 ## Themes
-Toggle between the light and dark themes using the sun or moon icon in the header.
+(1) Toggle between themes using the icon in the upper-right-hand corner. (I don't use dark mode, so it may be a bit uglier than its counterpart.)
 <p align="center">
-  <img src="images/sample-light-new.png" alt="Light mode" width="400"><br>
-  <em>Light mode</em>
+  <img src="images/sample-light-3.png" alt="Light mode" width="400"><br>
 </p>
 
 <p align="center">
-  <img src="images/sample-dark-new.png" alt="Light mode" width="400"><br>
-  <em>Dark mode</em>
+  <img src="images/sample-dark-3.png" alt="Light mode" width="400"><br>
 </p>
 
-Toggle between theme colors by clicking the interactive Set cards in the footer.
+(2) Toggle between theme colors by clicking the interactive Set cards in the sidebar.
 <p align="center">
   <img src="images/sample-theme.png" alt="Light mode" width="400"><br>
-</p>
-
-## Themes (Old)
-The website's old theme, featuring a mobile-friendly sidebar, can be forked from the `old-with-sidebar` branch.
-<p align="center">
-  <img src="images/sample-light-old.png" alt="Light mode" width="400"><br>
-  <em>Light mode</em>
-</p>
-
-<p align="center">
-  <img src="images/sample-dark-old.png" alt="Dark mode" width="400"><br>
-  <em>Dark mode</em>
 </p>
