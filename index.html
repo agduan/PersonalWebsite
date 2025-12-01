@@ -27,7 +27,12 @@
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-content">
             <div class="sidebar-brand">
-                <img src="images/mac1.png" alt="Macintosh" class="sidebar-avatar" />
+                <div class="mac-tooltip-wrapper" tabindex="0">
+                    <img src="images/mac1.png" alt="Macintosh" class="sidebar-avatar" />
+                    <div class="mac-tooltip">
+                        In the hit <em>Steve Jobs</em> (2015), Jobs NEEDS the Mac to say "Hello," but it can't, so he loses it and has an engineer fake it at the demo. Although this fact is of dubious veracity, I thought it was funny. Jobs would have made it big in the hackathon world.
+                    </div>
+                </div>
                 <h1 class="site-name">
                     <a href="https://alexandraduan.wiki/">alexandra duan</a>
                 </h1>
@@ -212,6 +217,19 @@
                     updateAccentColor(choice.dataset.color);
                 });
             });
+
+            // 7. Mac tooltip tap-to-toggle for mobile
+            const macTooltip = document.querySelector('.mac-tooltip-wrapper');
+            if (macTooltip) {
+                macTooltip.addEventListener('click', (e) => {
+                    macTooltip.classList.toggle('tooltip-active');
+                });
+                document.addEventListener('click', (e) => {
+                    if (!macTooltip.contains(e.target)) {
+                        macTooltip.classList.remove('tooltip-active');
+                    }
+                });
+            }
         });
     </script>
 

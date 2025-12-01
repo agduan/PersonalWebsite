@@ -135,6 +135,73 @@ a:focus {
     margin-bottom: 1rem;
 }
 
+/* Mac tooltip Easter egg */
+.mac-tooltip-wrapper {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+}
+
+.mac-tooltip {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 260px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    line-height: 1.5;
+    color: var(--fg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 300;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    text-align: left;
+}
+
+.mac-tooltip::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 8px solid transparent;
+    border-bottom-color: var(--border);
+}
+
+.mac-tooltip::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 7px solid transparent;
+    border-bottom-color: var(--bg);
+    z-index: 1;
+}
+
+.mac-tooltip-wrapper:hover .mac-tooltip,
+.mac-tooltip-wrapper:focus .mac-tooltip,
+.mac-tooltip-wrapper.tooltip-active .mac-tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+.mac-tooltip .tooltip-title {
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+body[data-theme="dark"] .mac-tooltip {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
 .site-name {
     font-family: 'JetBrains Mono', monospace;
     font-size: 1.5rem;
