@@ -4,10 +4,10 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>Design | Alexandra Duan</title>
+	<title>Portfolio | Alexandra Duan</title>
 
 	<link rel="stylesheet" href="style.css" />
-	<link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+	<link rel="icon" href="images/favicon.ico" type="image/x-icon"/>
 	<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet" />
 	<script src="setCards.js"></script>
 </head>
@@ -27,12 +27,7 @@
 	<aside class="sidebar" id="sidebar">
 		<div class="sidebar-content">
 			<div class="sidebar-brand">
-				<div class="mac-tooltip-wrapper" tabindex="0">
-                    <img src="images/mac2.png" alt="Macintosh" class="sidebar-avatar" />
-                    <div class="mac-tooltip">
-                        Jobs wanted the 512K to look like a friendly face. Maybe if you squint?
-                    </div>
-                </div>
+				<img src="images/mac2.png" alt="Macintosh" class="sidebar-avatar" />
 				<h1 class="site-name">
 					<a href="https://alexandraduan.wiki/">alexandra duan</a>
 				</h1>
@@ -90,11 +85,11 @@
 						<span class="tab-title">HOME</span>
 						<span class="tab-close">×</span>
 					</a>
-					<a href="portfolio.html" class="nav-link">
+					<a href="portfolio.html" class="nav-link active">
 						<span class="tab-title">PORTFOLIO</span>
 						<span class="tab-close">×</span>
 					</a>
-					<a href="design.html" class="nav-link active">
+					<a href="design.html" class="nav-link">
 						<span class="tab-title">DESIGN</span>
 						<span class="tab-close">×</span>
 					</a>
@@ -114,99 +109,113 @@
 		</header>
 
 		<div class="content-area">
-		<main>
-			<h1 id="design"><span style="color: #999;">$ home/</span>design</h1>
+		<main class="portfolio-main">
+			<h1><span style="color: #999;">$ home/</span>portfolio</h1>
 			<p class="sidebar-credit" style="text-align: left; opacity: 0.8; font-size: 0.9rem;">
-                Last login: <span id="last-login-time"></span> on Macintosh 512K<br>
-                guest@columbia:~/design $ npm run build:ui
-              </p>
-			<p>I draw on stickers, band-aids, laptops, notebooks, loose-leaf, and myself. I draw with colored pencils, Posca pens, markers, and maps of the Met. You could say that this website itself is a work of art (thanks!), in which case I also use Visual Studio Code.</p>
-			<p>Scroll down to see some of the things I've made.</p>
-			<h2><span style="color: #999;">$ cd "</span>doodles<span style="color: #999;">"</span></h2>
-			<section class="portfolio-gallery">
-				<div class="gallery-item">
-					<img src="images/design/glass-animals.jpeg" alt="Glass Animals art" />
-					<p class="caption">Spot the lyrics to Glass Animals's <a href="https://youtu.be/sm3PbXKSv40?si=dvKi2KthukbEg4Yg">Wonderful Nothing</a></p>
-				</div>
+				Last login: <span id="last-login-time"></span> on Macintosh 512K<br>
+				guest@columbia:~/portfolio $ git log
+			</p>
 
-				<div class="gallery-item carousel">
+			<!-- OK Socrates -->
+			<article class="project-card">
+				<div class="project-info">
+					<h2>1. Ok, Socrates</h2>
+					<p>A real-time public speaking coach that analyzes eye contact and body language, displays speaking metrics, and generates personalized follow-up questions and feedback based on presentation type.<br><br>Powered by the OpenAI API for feedback and an open-source ML/computer vision model for the visual analysis.</p>
+					<br>
+					<p>Frontend: <code>React</code> <code>HTML/CSS</code> <code>JavaScript</code><br>
+					Backend: <code>Node.js</code> <code>OpenAI API</code> <code>Google Cloud Speech-to-Text</code> <code>MediaPipe</code></p>
+					<p class="project-links"><a href="https://github.com/agduan/HackMIT-2025">GitHub</a></p>
+				</div>
+				<div class="project-image">
+					<img src="images/portfolio/oksocrates.png" alt="OK Socrates" />
+					<p class="caption">Me and Socrates. We originally had a great team photo, but it was vetoed by everyone else for being too chopped.</p>
+				</div>
+			</article>
+
+			<!-- Poster Placer -->
+			<article class="project-card">
+				<div class="project-info">
+					<h2>2. Poster Placer</h2>
+					<p>An interactive website to visualize the maximum size, quality, and placement of your posters.</p>
+					<br>
+					<p><code>HTML/CSS</code> <code>JavaScript</code></p>
+					<p class="project-links"><a href="https://agduan.github.io/poster-placer/">Website</a> · <a href="https://github.com/agduan/poster-placer">GitHub</a></p>
+				</div>
+				<div class="project-image">
+					<img src="images/portfolio/posterplacer.png" alt="Poster Placer" />
+					<p class="caption">Red indicates an image expanded beyond its maximum advisable quality.<br>"L" indicates a poster larger than a sheet of paper.</p>
+				</div>
+			</article>
+
+			<!-- Songzi -->
+			<article class="project-card">
+				<div class="project-info">
+					<h2>3. Songzi</h2>
+					<p>A website that translates, speaks, and displays the complexity of characters in Chinese text. Characters are color-coded by <a href="https://en.wikipedia.org/wiki/Hanyu_Shuiping_Kaoshi">HSK level</a>, a standardized Chinese proficiency test.</p>
+					<br>
+					<p><code>Google Translate API</code> <code>HTML/CSS</code> <code>JavaScript</code></p>
+					<p class="project-links"><a href="https://agduan.github.io/Songzi">Website</a> · <a href="https://github.com/agduan">GitHub</a></p>
+				</div>
+				<div class="project-image">
+					<img src="images/portfolio/songzi.png" alt="Songzi" />
+					<p class="caption">Songzi on a <a href="https://en.wikipedia.org/wiki/Yi_Jian_Mei_(song)#Internet_popularity">popular song</a>. I passed HSK Level 4, the green text.</p>
+				</div>
+			</article>
+
+			<!-- Set -->
+			<article class="project-card">
+				<div class="project-info">
+					<h2>4. Set Without Friends</h2>
+					<p>An offline, no-backend, no-multiplayer, no-friends version of the popular website <a href="https://setwithfriends.com/">Set With Friends</a>.<br><br>I removed the realtime database from the original GitHub, added a game analytics component, and transferred all single-player game logic to React. The website runs entirely in the browser and can be played offline!</p>
+					<br>
+					<p><code>React</code> <code>JavaScript</code></p>
+					<p class="project-links"><a href="https://agduan.github.io/SetWithoutFriends/">Website</a> · <a href="https://github.com/agduan/SetWithoutFriends">GitHub</a></p>
+				</div>
+				<div class="project-image">
+					<img src="images/portfolio/set.png" alt="Set" />
+					<p class="caption">(Who's that extra player on the scoreboard?)</p>
+				</div>
+			</article>
+
+			<!-- Essay Stack (Carousel) -->
+			<article class="project-card">
+				<div class="project-info">
+					<h2>5. EssayStack</h2>
+					<p>A Firebase-based bookmark manager, made to store the essays I wanted to read.</p>
+					<br>
+					<p><code>Firebase Realtime Database</code> <code>HTML/CSS</code></p>
+					<p class="project-links"><a href="https://agduan.github.io/EssayStack/">Website</a> · <a href="https://github.com/agduan/EssayStack">GitHub</a></p>
+				</div>
+				<div class="project-image">
+					<img src="images/portfolio/essay1.png" alt="Essay Stack 1" class="active" />
+					<p class="caption">Gave up on developing this as soon as I found <a href="https://raindrop.io/">Raindrop</a>.</p>
+				</div>
+			</article>
+
+			<!-- Fin (Carousel - fin2 first) -->
+			<article class="project-card">
+				<div class="project-info">
+					<h2>6. Finosaur</h2>
+					<p>A tool to visualize your future financial status. I worked on the retro/game/dinosaur-themed UI, including the three Gemini wrappers to the right.</p>
+					<br>
+					<p><code>Gemini API</code> <code>TypeScript</code> <code>Next.js</code> <code>Tailwind CSS</code></p>
+					<p class="project-links"><a href="https://www.finosaur.nyc/">Website</a> · <a href="https://github.com/agduan/DivHacks-2025">GitHub</a></p>
+				</div>
+				<div class="project-image carousel">
 					<div class="carousel-images">
-						<img src="images/design/cap-1.jpeg" alt="Grad cap 1" class="active" />
-						<img src="images/design/cap-2.jpeg" alt="Grad cap 2" />
-						<img src="images/design/cap-3.jpeg" alt="Grad cap 3" />
+						<img src="images/portfolio/fin2.png" alt="Fin 2" class="active" />
+						<img src="images/portfolio/fin1.png" alt="Fin 1" />
 					</div>
 					<div class="carousel-controls">
 						<button class="arrow left">←</button>
 						<span class="carousel-index"></span>
 						<button class="arrow right">→</button>
 					</div>
-					<p class="caption">My old graduation cap, and some goofy-looking lion sketches</p>
+					<p class="caption">A beautiful hackathon project that definitely works</p>
 				</div>
+			</article>
 
-				<div class="gallery-item">
-					<img src="images/design/bandaid.jpeg" alt="Butterfly band-aid" />
-					<p class="caption">A band-aid I once drew on</p>
-				</div>
-
-				<div class="gallery-item">
-					<img src="images/design/mid-autumn.jpeg" alt="Mid-autumn festival art" />
-					<p class="caption">Happy Mid-Autumn!</p>
-				</div>
-
-				<div class="gallery-item">
-					<img src="images/design/mothers-day.jpeg" alt="Mother's Day card" />
-					<p class="caption">A card loosely inspired by the cover of my mom's former favorite album, Hua Chenyu's <a href="https://youtu.be/aILqd3sqmt8?si=9q7NhrTSmf4hOwYM">New World</a></p>
-				</div>
-
-				<div class="gallery-item carousel">
-					<div class="carousel-images">
-						<img src="images/design/sticker-dragon.jpeg" alt="Sticker 2" class="active" />
-						<img src="images/design/sticker-lobster.jpeg" alt="Sticker 3" />
-						<img src="images/design/sticker-fish.jpeg" alt="Sticker 4" />
-					</div>
-					<div class="carousel-controls">
-						<button class="arrow left">←</button>
-						<span class="carousel-index"></span>
-						<button class="arrow right">→</button>
-					</div>
-					<p class="caption">Various stickers I've made</p>
-				</div>
-
-			</section>
-
-			<h2><span style="color: #999;">$ cd "</span>collages<span style="color: #999;">"</span></h2>
-			<section class="portfolio-gallery">
-				<div class="gallery-item">
-					<img src="images/design/laptop.jpeg" alt="Laptop stickers" />
-					<p class="caption">My laptop stickers. Obtained from my friends, career fairs, hackathons, and competitions, or drawn by me!</p>
-				</div>
-
-				<div class="gallery-item">
-					<img src="images/design/airpods.jpeg" alt="Airpods" />
-					<p class="caption">Guess how many times I've been to the Met? Check out the 212 cutout (because it's the NYC area code) and the American Wing cutout (because it's the best wing).</p>
-				</div>
-
-				<div class="gallery-item">
-					<img src="images/design/notebook.jpeg" alt="Notebook" />
-					<p class="caption">My journal, generously decorated with cutouts from various museum maps and flyers</p>
-				</div>
-			</section>
-
-			<h2><span style="color: #999;">$ cd "</span>me<span style="color: #999;">"</span></h2>
-			<p>Below are some portraits of the artist. Thanks for scrolling!</p>
-			<section class="portfolio-gallery">
-				<div class="gallery-item">
-					<img src="images/design/me.jpeg" alt="Cartoon cat" />
-					<p class="caption">Most cats eat birds, but this cat would never. In fact, thanks to <a href="https://www.soinc.org/ornithology-c">Science Olympiad</a>, this cat can identify 200+ species of them and is currently a member of the Columbia Birding Troupe.</p>
-				</div>
-
-				<div class="gallery-item">
-					<img src="images/design/me-bird.jpeg" alt="Cartoon pigeon" />
-					<p class="caption">A long-legged pigeon. Like its distant cousin, the invasive <a href="https://en.wikipedia.org/wiki/Feral_pigeon">feral pigeon</a>, it invaded New York City long ago and likes it here very much.</p>
-				</div>
-			</section>
 		</main>
-
 		</div>
 	</div>
 
@@ -283,6 +292,34 @@
 					updateAccentColor(choice.dataset.color);
 				});
 			});
+
+			// Carousel functionality
+			document.querySelectorAll('.carousel').forEach(carousel => {
+				const images = carousel.querySelectorAll('.carousel-images img');
+				const leftBtn = carousel.querySelector('.arrow.left');
+				const rightBtn = carousel.querySelector('.arrow.right');
+				const indexSpan = carousel.querySelector('.carousel-index');
+				let currentIndex = 0;
+
+				function updateCarousel() {
+					images.forEach((img, i) => {
+						img.classList.toggle('active', i === currentIndex);
+					});
+					indexSpan.textContent = `${currentIndex + 1} / ${images.length}`;
+				}
+
+				leftBtn.addEventListener('click', () => {
+					currentIndex = (currentIndex - 1 + images.length) % images.length;
+					updateCarousel();
+				});
+
+				rightBtn.addEventListener('click', () => {
+					currentIndex = (currentIndex + 1) % images.length;
+					updateCarousel();
+				});
+
+				updateCarousel();
+			});
 		});
 	</script>
 
@@ -290,3 +327,4 @@
 </body>
 
 </html>
+
